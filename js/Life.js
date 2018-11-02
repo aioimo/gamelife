@@ -15,6 +15,12 @@ class Life {
     this.iterationNumber++;
   }
 
+  clear() {
+    this.iterationNumber = 0;
+    this.currentState = matrix(height/this.cellSize,width/this.cellSize);
+    this.drawCurrentState();
+  }
+
   toggle(y,x) {
     if (this.currentState[y][x]===0) {
       this.currentState[y][x] = 1
@@ -100,7 +106,7 @@ class Life {
   drawInactiveCell(y,x) {
     this.ctx.save();
     this.ctx.translate(xDisplacement,yDisplacement);
-    this.ctx.fillStyle = "grey"
+    this.ctx.fillStyle = "RGB(211,211,211)"
     this.ctx.fillRect(x*this.cellSize+1,y*this.cellSize+1,this.cellSize-2,this.cellSize-2);
     this.ctx.restore();
   }
